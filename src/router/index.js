@@ -14,6 +14,20 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+  },
+  {
+    path: '/reglesSpeciales',
+    name: 'reglesSpeciales',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/regleSpecial.vue')
+  },
+  {
+    path: '/:catchAll(.*)*',
+    name: 'NotFound',
+    // Fin de routeur
+    component: () => import(/* webpackChunkName: "404" */ '../views/notFound.vue')
   }
 ]
 
