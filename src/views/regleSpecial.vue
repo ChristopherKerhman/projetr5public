@@ -56,11 +56,6 @@ button {
   padding-left: 0.25em;
   padding-right: 0.25em;
 }
-ul {
-  list-style: none;
-  text-align: left;
-  cursor: pointer;
-}
 h3 {
   text-align: left;
 }

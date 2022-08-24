@@ -1,17 +1,18 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Bienvenu sur le site de R5"/>
+    <h3>Le projet R5</h3>
+    <h4>La liste des univers disponible</h4>
+    <triUnivers></triUnivers>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import triUnivers from '@/components/listeUnivers.vue'
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    triUnivers
   }
 }
 </script>
