@@ -2,6 +2,7 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/reglesSpeciales">Règles spéciales</router-link> |
+      <router-link to="/roster">Créer une liste</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
   <router-view/>

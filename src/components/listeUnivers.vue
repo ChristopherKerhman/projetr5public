@@ -1,10 +1,11 @@
 <template>
   <section>
     <ul>
-      <li v-for="l in listeUnivers" v-bind:key="l" @click="searchFactions(l.idUnivers)">{{l.nomUnivers}}</li>
-      <ul  v-if="listeFaction != null">
-        <li v-for="k in listeFaction" v-bind:key="k">{{k.nomFaction}}</li>
-      </ul>
+      <li v-for="l in listeUnivers" v-bind:key="l" @click="searchFactions(l.idUnivers, l.nomUnivers)">{{l.nomUnivers}}</li>
+    </ul>
+    <ul  v-if="listeFaction != null">
+      <li><h3>{{nomUnivers}}</h3></li>
+      <li v-for="k in listeFaction" v-bind:key="k">{{k.nomFaction}}</li>
     </ul>
 
   </section>
@@ -15,7 +16,8 @@ export default {
   data () {
     return {
       listeUnivers: null,
-      listeFaction: null
+      listeFaction: null,
+      nomUnivers: null
     }
   },
   mounted () {
@@ -28,8 +30,9 @@ export default {
       })
   },
   methods: {
-    searchFactions (id) {
+    searchFactions (id, nom) {
       this.listeFaction = null
+      this.nomUnivers = nom
       fetch('https://apir5.graines1901.com/sources/APIpublic/listeFactions.php?idUnivers=' + id)
         .then(response => response.json())
         .then(response => {

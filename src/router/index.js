@@ -24,6 +24,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "reglesSpeciales" */ '../views/regleSpecial.vue')
   },
   {
+    path: '/roster',
+    name: 'MyRoster',
+    component: () => import(/* webpackChunkName: "roster" */'../views/roster.vue')
+  },
+  {
     path: '/:catchAll(.*)*',
     name: 'NotFound',
     // Fin de routeur
