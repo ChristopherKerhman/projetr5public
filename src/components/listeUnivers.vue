@@ -21,7 +21,7 @@
         <li>Présentation : {{OneFigurine.texteFigurine}}</li>
         <li>DQM: {{de[OneFigurine.DQM]}} / DC: {{de[OneFigurine.DC]}}</li>
         <li>Sauvegarde : {{armure[OneFigurine.svg]}} / Point de vie: {{OneFigurine.pdv}}</li>
-        <li>Règle spécial de la figurine : <strong v-for="p in RSFigurine" :key="p">{{p.nomRS}}.</strong> </li>
+        <li><div v-if="RSFigurine.length > 0">Règle spécial de la figurine : <strong v-for="p in RSFigurine" :key="p">{{p.nomRS}}.</strong></div></li>
         <li>Armes:
           <ul v-for="q in OneFigurine[2]" :key="q">
             <li v-if="q.typeArme > 0">
@@ -30,15 +30,14 @@
             </li>
             <li v-if="q.gabarit >0">Gabarit de l'arme : {{gabarit[q.gabarit]}}</li>
             <li v-else>{{q.nomArme}} - Type {{typeArme[q.typeArme]}} - {{puissance[q.puissance]+de[OneFigurine.DC]}}</li>
-            <li v-for="t in q[0]" :key="t">Règles spéciales : <strong v-for="u in t.RS" :key="u">{{u}}.</strong></li>
+            <ul>
+              <li v-for="t in q[0]" :key="t"><div v-if="t.RS.length > 0">Règles spéciales :<strong v-for="u in t.RS" :key="u">{{u}}.</strong></div></li>
+            </ul>
           </ul>
         </li>
-
       </ul>
-
     </article>
   </section>
-
 </template>
 <script>
 export default {
@@ -58,7 +57,8 @@ export default {
       gabarit: ['Pas de gabarit', 'Petit', 'Moyen', 'Grand', 'Cône'],
       puissance: [1, 2, 3, 4, 5, 6],
       RSFigurine: null,
-      RSArme: ['A']
+      RSArme: ['A'],
+      message: 'Pas de règle spéciales'
     }
   },
   mounted () {
