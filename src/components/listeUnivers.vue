@@ -66,6 +66,9 @@ export default {
       .then(response => response.json())
       .then(response => {
         this.listeUnivers = response
+        this.$store.dispatch('ListeUnivers', {
+          ListeUnivers: this.listeUnivers
+        })
       })
       .catch(e => {
       })
