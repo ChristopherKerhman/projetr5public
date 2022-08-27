@@ -20,12 +20,6 @@ export default {
   },
   computed: {
     ...mapState(['ListeUnivers'])
-  },
-  methods: {
-    selectionUnivers (id) {
-      // Envoyé dans le store l'ID et le nom de l'univers.
-
-    }
   }
 }
 </script>
