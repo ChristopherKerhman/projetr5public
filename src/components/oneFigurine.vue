@@ -1,6 +1,6 @@
 <template>
   <section v-for="ab in data[0]" :key="ab">
-    <h3>Détail de la figurine</h3>
+    <h3>Détail de la figurine {{ab.nomFigurine}}</h3>
     <ul>
       <li>Nom de la figurine : {{ab.nomFigurine}}</li>
       <li>Rôle : {{role[ab.role]}}</li>
@@ -8,10 +8,11 @@
       <li>Mouvement : {{ab.mouvement}} "/ {{Math.round(ab.mouvement * 1.4, 0)}}" + 1D4"</li>
       <li>Point de vie : {{ab.pdv}} / Armure: {{armure[ab.svg]}}</li>
       <li v-if="data[1].length">Règles spéciales : <strong v-for="rs in data[1]"  :key="rs">{{rs.nomRS}}.</strong></li>
+      <li>Description : {{ab.texteFigurine}}</li>
     </ul>
     <ul v-for="armes in data[2]" :key="armes">
-      <li v-if="armes.typeArme == 0">{{armes.nomArme}} {{puissance[armes.puissance]}}{{de[ab.DC]}}{{surPuissance[armes.surPuissance]}}</li>
-      <li v-if="armes.typeArme == 1">{{armes.nomArme}} {{puissance[armes.puissance]}}{{de[ab.DC]}}{{surPuissance[armes.surPuissance]}} portée: {{armes.range}}" (<strong v-for="RSarme in armes[0]" :key="RSarme">{{RSarme.nomRS}}</strong>)</li>
+      <li v-if="armes.typeArme == 0">{{armes.nomArme}} {{puissance[armes.puissance]}}{{de[ab.DC]}}{{surPuissance[armes.surPuissance]}} (<strong v-for="RSarme in armes[0]" :key="RSarme">{{RSarme.nomRS}}.</strong>)</li>
+      <li v-if="armes.typeArme == 1">{{armes.nomArme}} {{puissance[armes.puissance]}}{{de[ab.DC]}}{{surPuissance[armes.surPuissance]}} portée: {{armes.range}}" (<strong v-for="RSarme in armes[0]" :key="RSarme">{{RSarme.nomRS}}.</strong>)</li>
       <li v-if="armes.typeArme == 2">{{armes.nomArme}} {{puissance[armes.puissance]}}{{de[ab.DC]}}{{surPuissance[armes.surPuissance]}} portée: {{armes.range}}"
       Gabarit {{gabarit[armes.gabarit]}}  (<strong v-for="RSarme in armes[0]" :key="RSarme">{{RSarme.nomRS}}.</strong>)</li>
     </ul>
