@@ -5,7 +5,7 @@
       <button v-for="t in types"  :key="t" @click="reglesSpeciales(t.id)">{{t.RegS}}</button>
     </article>
     <article>
-      <h3>{{types[idType].RegS}}</h3>
+      <h3 v-if="vueRS">{{types[idType].RegS}}</h3>
       <ul>
         <li v-for="k in regles"  :key="k" @click="affichage(k)">{{k.nomRS}}</li>
       </ul>
@@ -36,7 +36,7 @@ export default {
       fetch('https://apir5.graines1901.com/sources/APIpublic/reglesSpeciale.php?typeRS=' + this.idType)
         .then(response => response.json())
         .then(response => {
-          this.vueRS = false
+          this.vueRS = true
           this.regles = response
         })
         .catch(e => {
@@ -61,5 +61,9 @@ h3 {
 }
 .paragrapge {
   text-align: justify;
+}
+ul {
+  text-decoration: underline;
+  padding-bottom: 0.5em;
 }
 </style>
