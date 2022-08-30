@@ -83,3 +83,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+ul {
+  list-style: decimal;
+  text-decoration: underline;
+}
+</style>

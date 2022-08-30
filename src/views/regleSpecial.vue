@@ -62,8 +62,4 @@ h3 {
 .paragrapge {
   text-align: justify;
 }
-ul {
-  text-decoration: underline;
-  padding-bottom: 0.5em;
-}
 </style>

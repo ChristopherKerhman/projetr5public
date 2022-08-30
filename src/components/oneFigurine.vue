@@ -42,3 +42,8 @@ export default {
 }
 
 </script>
+<style>
+  ul {
+    text-decoration: none;
+  }
+</style>
