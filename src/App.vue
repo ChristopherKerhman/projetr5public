@@ -31,10 +31,7 @@ nav a.router-link-exact-active {
 }
 ul {
   list-style: none;
-  text-decoration: underline;
   text-align: left;
   cursor: pointer;
-  padding-bottom: 0.5em;
 }
-
 </style>

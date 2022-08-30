@@ -2,14 +2,14 @@
   <section>
     <article>
       <h3>Les univers et faction disponible</h3>
-      <ul>
+      <ul class="styleRoster" >
         <li v-for="l in listeUnivers" v-bind:key="l" @click="searchFactions(l.idUnivers, l.nomUnivers)">{{l.nomUnivers}}</li>
       </ul>
-      <ul  v-if="listeFaction != null">
+      <ul class="styleRoster"   v-if="listeFaction != null">
         <li><h3>{{nomUnivers}}</h3></li>
         <li v-for="k in listeFaction" v-bind:key="k" @click="listeFigurine(k.idFaction, k.nomFaction)">{{k.nomFaction}}</li>
       </ul>
-      <ul v-if ="listeFigurines != null">
+      <ul class="styleRoster" v-if ="listeFigurines != null">
           <li v-for="m in listeFigurines" v-bind:key="m" @click="affichage(m)">{{m.nomFigurine}} Prix figurine : {{[m][0][0].prixFigurine}} points</li>
       </ul>
     </article>
@@ -42,6 +42,12 @@ export default {
       })
   },
   methods: {
+    resetFigurine () {
+      this.dataFigurine = []
+      this.$store.dispatch('dataFigurine', {
+        dataFigurine: this.dataFigurine
+      })
+    },
     searchFactions (id, nom) {
       this.listeFaction = null
       this.nomUnivers = nom
@@ -52,6 +58,7 @@ export default {
         })
         .catch(e => {
         })
+      this.resetFigurine()
     },
     listeFigurine (idF, nomF) {
       this.nomFaction = nomF
@@ -62,6 +69,7 @@ export default {
         })
         .catch(e => {
         })
+      this.resetFigurine()
     },
     affichage (detailsFigurine) {
       this.idFigurine = detailsFigurine.idFigurine
@@ -84,7 +92,7 @@ export default {
 }
 </script>
 <style scoped>
-ul {
+.styleRoster {
   list-style: decimal;
   text-decoration: underline;
 }

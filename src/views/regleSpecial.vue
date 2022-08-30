@@ -6,7 +6,7 @@
     </article>
     <article>
       <h3 v-if="vueRS">{{types[idType].RegS}}</h3>
-      <ul>
+      <ul class="listeRS">
         <li v-for="k in regles"  :key="k" @click="affichage(k)">{{k.nomRS}}</li>
       </ul>
     </article>
@@ -61,5 +61,11 @@ h3 {
 }
 .paragrapge {
   text-align: justify;
+}
+.listeRS {
+    text-decoration: underline;
+}
+.listeRS li {
+  margin-bottom: 0.5em;
 }
 </style>

@@ -1,8 +1,10 @@
 <template>
-  <h3>Roster</h3>
-  <!--<addListe></addListe>-->
-  <triUnivers></triUnivers>
-  <oneFigurine></oneFigurine>
+  <section class="roster">
+    <h3>Roster</h3>
+    <!--<addListe></addListe>-->
+      <triUnivers></triUnivers>
+      <oneFigurine></oneFigurine>
+  </section>
 </template>
 <script>
 import { mapState } from 'vuex'
@@ -24,3 +26,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.roster {
+  display: flex;
+}
+</style>
