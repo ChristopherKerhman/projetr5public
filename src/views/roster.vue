@@ -1,21 +1,24 @@
 <template>
-  <section class="roster">
-    <h3>Roster</h3>
-    <!--<addListe></addListe>-->
+      <h3>Roster</h3>
+  <section>
+    <article class="roster">
       <triUnivers></triUnivers>
       <oneFigurine></oneFigurine>
+    </article>
+      <listeFigurines></listeFigurines>
   </section>
 </template>
 <script>
 import { mapState } from 'vuex'
-// import addListe from '@/components/addListe.vue'
 import triUnivers from '@/components/listeUnivers.vue'
 import oneFigurine from '@/components/oneFigurine.vue'
+import listeFigurines from '@/components/listeFigurines.vue'
 export default {
   name: 'MyRoster',
   components: {
     triUnivers,
-    oneFigurine
+    oneFigurine,
+    listeFigurines
   },
   data () {
     return {

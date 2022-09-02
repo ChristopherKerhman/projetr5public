@@ -5,7 +5,9 @@ export default createStore({
     ListeUnivers: [],
     ListeFaction: [],
     idFigurine: null,
-    dataFigurine: []
+    dataFigurine: [],
+    listeAlpha: [],
+    listeBravo: []
   },
   getters: {
   },
