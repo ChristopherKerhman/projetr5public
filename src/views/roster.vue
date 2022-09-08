@@ -1,5 +1,4 @@
 <template>
-      <h3>Roster</h3>
   <section>
     <article class="roster">
       <triUnivers></triUnivers>

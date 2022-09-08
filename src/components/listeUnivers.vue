@@ -72,11 +72,16 @@ export default {
       this.resetFigurine()
     },
     affichage (detailsFigurine) {
+      const priceFigurine = detailsFigurine[0].prixFigurine
       this.idFigurine = detailsFigurine.idFigurine
       // Ajouter id de la figurine dans le store
       this.$store.dispatch('idFigurine', {
         idFigurine: this.idFigurine
       })
+      this.$store.dispatch('price', {
+        price: priceFigurine
+      })
+      // Ajouter le prix de la figurine dans le store
       fetch('https://apir5.graines1901.com/sources/APIpublic/oneFigurine.php?idFigurine=' + this.idFigurine)
         .then(response => response.json())
         .then(response => {

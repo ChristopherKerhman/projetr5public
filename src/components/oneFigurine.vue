@@ -1,6 +1,6 @@
 <template>
   <section v-for="ab in data[0]" :key="ab">
-    <h3>Détail de la figurine {{ab.nomFigurine}}</h3>
+    <h3>Détail de la figurine {{ab.nomFigurine}} | Prix {{prix}}</h3>
     <ul>
       <li>Nom de la figurine : {{ab.nomFigurine}}</li>
       <li>Rôle : {{role[ab.role]}}</li>
@@ -37,7 +37,7 @@ export default {
     }
   },
   computed: {
-    ...mapState({ id: 'idFigurine', data: 'dataFigurine' })
+    ...mapState({ id: 'idFigurine', data: 'dataFigurine', prix: 'price' })
   }
 }
 

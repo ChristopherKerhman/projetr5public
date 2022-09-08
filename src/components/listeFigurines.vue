@@ -1,5 +1,5 @@
 <template>
-      <h3>Listes figurines</h3>
+      <h3>Créer deux listes</h3>
   <section class="ligne">
     <article class="colonne">
       <label for="liste1">Nom de la liste Alpha</label>
@@ -14,16 +14,32 @@
     </article>
     <article>
       <p @click="resetMessage" v-if="message">{{message}}</p>
-      <aside>
-        <ul>
-          <li v-for="listeNote in liste1"  :key="listeNote">{{listeNote.nomListe}}</li>
+    </article>
+  </section>
+  <section v-if="ok == true">
+    <article>
+      <h3>Vos deux listes</h3>
+      <ul v-for="indFigurine in dataFigurine[0]" :key="indFigurine">
+        <li>{{liste1[0].nomListe}}</li>
+        <li v-if="dataFigurine !=[]">
+          <p v-for="indData in dataFigurine[0]" :key="indData">
+          <button type="button" @click="add(1, indData.idFigurine, indData.nomFigurine)">+ {{indData.nomFigurine}}</button>
+          </p>
+        </li>
+        <ul v-for="tb in liste1"  :key="tb">
+                  <li v-if="tb.nomListe">{{tb.nomListe}} Total : {{sumListeA}}</li>
+                  <li v-else>Nom : {{tb.nomFigurine}} prix : {{tb.prix}}</li>
         </ul>
-      </aside>
-      <aside>
-        <ul>
-          <li v-for="listeNote in liste2"  :key="listeNote">{{listeNote.nomListe}}</li>
+        <li v-if="dataFigurine !=[]">{{liste2[0].nomListe}}</li>
+          <li><p v-for="indData in dataFigurine[0]" :key="indData">
+          <button type="button" @click="add(2, indData.idFigurine, indData.nomFigurine)">+ {{indData.nomFigurine}}</button>
+          </p>
+        </li>
+        <ul v-for="tc in liste2"  :key="tc">
+                  <li v-if="tc.nomListe">{{tc.nomListe}} Total : {{sumListeB}}</li>
+                  <li v-else>Nom : {{tc.nomFigurine}} prix : {{tc.prix}}</li>
         </ul>
-      </aside>
+      </ul>
     </article>
   </section>
 </template>
@@ -34,16 +50,22 @@ export default {
   data () {
     return {
       message: null,
+      ok: false,
       nomListe1: '',
       nomListe2: '',
+      sumListeA: 0,
+      sumListeB: 0,
       liste1: [],
       liste2: []
     }
   },
   computed: {
-    ...mapState(['listeAlpha', 'listeBravo'])
+    ...mapState(['dataFigurine', 'price'])
   },
   methods: {
+    resetMessage () {
+      this.message = null
+    },
     record (alpha, bravo) {
       // Controle des champs alpha et Bravo
       if ((alpha.length === 0) || (bravo.length === 0)) {
@@ -53,23 +75,43 @@ export default {
         if (this.liste1.length > 0) {
           this.message = 'Erreur de traitement'
         } else {
+          this.resetMessage()
           const construct = { nomListe: alpha }
           this.liste1.push(construct)
+          this.ok = true
         }
         if (this.liste2.length > 0) {
           this.message = 'Erreur de traitement'
         } else {
+          this.resetMessage()
           const construct = { nomListe: bravo }
           this.liste2.push(construct)
+          this.ok = true
         }
       }
     },
-    resetMessage () {
-      this.message = null
+    add (liste, idF, name) {
+      if (liste === 1) {
+        const construct = { idFigurine: idF, nomFigurine: name, prix: this.price }
+        this.liste1.push(construct)
+      }
+      if (liste === 2) {
+        const construct = { idFigurine: idF, nomFigurine: name, prix: this.price }
+        this.liste2.push(construct)
+      }
+      // Addition des sommes des deux listes
+      this.sumListeA = 0
+      for (var i = 1; i < this.liste1.length; i++) {
+        this.sumListeA = this.sumListeA + this.liste1[i].prix
+      }
+      // Addition des sommes des deux listes
+      this.sumListeB = 0
+      for (var j = 1; j < this.liste2.length; j++) {
+        this.sumListeB = this.sumListeB + this.liste2[j].prix
+      }
     }
   }
 }
-
 </script>
 <style>
   .colonne {

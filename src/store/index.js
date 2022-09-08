@@ -5,6 +5,7 @@ export default createStore({
     ListeUnivers: [],
     ListeFaction: [],
     idFigurine: null,
+    price: 0,
     dataFigurine: [],
     listeAlpha: [],
     listeBravo: []
@@ -20,6 +21,9 @@ export default createStore({
     },
     dataFigurine (state, payload) {
       state.dataFigurine = payload
+    },
+    price (state, payload) {
+      state.price = payload
     }
   },
   actions: {
@@ -31,6 +35,9 @@ export default createStore({
     },
     dataFigurine (context, payload) {
       context.commit('dataFigurine', payload.dataFigurine)
+    },
+    price (context, payload) {
+      context.commit('price', payload.price)
     }
   },
   modules: {
