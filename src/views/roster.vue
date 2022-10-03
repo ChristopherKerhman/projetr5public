@@ -24,7 +24,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['idFigurine', 'dataFigurine'])
+    ...mapState(['idFigurine', 'dataFigurine', 'listeA'])
   }
 }
 </script>

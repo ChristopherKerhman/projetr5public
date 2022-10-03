@@ -7,12 +7,18 @@ export default createStore({
     idFigurine: null,
     price: 0,
     dataFigurine: [],
-    listeAlpha: [],
-    listeBravo: []
+    listeA: null,
+    listeB: null
   },
   getters: {
   },
   mutations: {
+    listeA (state, payload) {
+      state.listeA = payload
+    },
+    listeB (state, payload) {
+      state.listeB = payload
+    },
     ListeUnivers (state, payload) {
       state.ListeUnivers = payload
     },
@@ -27,6 +33,12 @@ export default createStore({
     }
   },
   actions: {
+    listeA (context, payload) {
+      context.commit('listeA', payload.listeA)
+    },
+    listeB (context, payload) {
+      context.commit('listeB', payload.listeB)
+    },
     ListeUnivers (context, payload) {
       context.commit('ListeUnivers', payload.ListeUnivers)
     },

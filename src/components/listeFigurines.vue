@@ -1,7 +1,7 @@
 <template>
       <h3>Créer deux listes</h3>
   <section class="ligne">
-    <article class="colonne">
+    <article v-if="listeA === null" class="colonne">
       <label for="liste1">Nom de la liste Alpha</label>
       <input id="liste1" v-model="nomListe1">
       <label for="liste2">Nom de liste Bravo</label>
@@ -14,6 +14,7 @@
     </article>
     <article>
       <p @click="resetMessage" v-if="message">{{message}}</p>
+      <p v-if="listeA" @click="charger">Charger les deux listes</p>
     </article>
   </section>
   <section v-if="ok == true">
@@ -41,6 +42,9 @@
         </ul>
       </ul>
     </article>
+    <article >
+      <button v-if="!save" type="button" @click="sauvegarderLocal">Sauver les deux listes</button>
+    </article>
   </section>
 </template>
 <script>
@@ -56,11 +60,12 @@ export default {
       sumListeA: 0,
       sumListeB: 0,
       liste1: [],
-      liste2: []
+      liste2: [],
+      save: false
     }
   },
   computed: {
-    ...mapState(['dataFigurine', 'price'])
+    ...mapState(['dataFigurine', 'price', 'listeA', 'listeB'])
   },
   methods: {
     resetMessage () {
@@ -109,6 +114,23 @@ export default {
       for (var j = 1; j < this.liste2.length; j++) {
         this.sumListeB = this.sumListeB + this.liste2[j].prix
       }
+    },
+    storeListe () {
+      this.$store.dispatch('listeA', {
+        listeA: this.liste1
+      })
+      this.$store.dispatch('listeB', {
+        listeB: this.liste2
+      })
+    },
+    sauvegarderLocal () {
+      this.save = true
+      this.storeListe()
+    },
+    charger () {
+      this.liste1 = this.listeA
+      this.liste2 = this.listeB
+      this.ok = true
     }
   }
 }

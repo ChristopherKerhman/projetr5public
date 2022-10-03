@@ -29,6 +29,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "roster" */'../views/roster.vue')
   },
   {
+    path: '/impression',
+    name: 'PrintListe',
+    component: () => import(/* webpackChunkName: "impression" */'../views/printListe.vue')
+  },
+  {
     path: '/:catchAll(.*)*',
     name: 'NotFound',
     // Fin de routeur
